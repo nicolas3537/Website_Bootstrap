@@ -1,4 +1,4 @@
-#!/home/nico/DEV/website/.env/bin/python3.11
+#!/home/nico/DEV/website/.env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
