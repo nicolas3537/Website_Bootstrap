@@ -27,6 +27,11 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'todolist' %}">Todolist</a>
                 </li>
+                {% if user.get_username == nickname %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://wamserver.synology.me/">Heimdall</a>
+                </li>
+                {% endif %}
                 </lu>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if user.is_authenticated %}

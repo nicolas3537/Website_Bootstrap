@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Task
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .forms import TaskForm
+
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'home.html', {"nickname": 'nico'})
 
 @login_required
 def todolist(request):
