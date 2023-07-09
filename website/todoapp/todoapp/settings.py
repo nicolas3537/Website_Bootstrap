@@ -23,9 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-co6$e1y++2vh-l9i(qitip15$6^vuav)xbe(x4-df^78cd&)@3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["192.168.1.158"]
+ALLOWED_HOSTS = [
+    "192.168.1.158",
+    "webserver.wamserver.synology.me",
+    
+    ]
 
 
 # Application definition
@@ -129,3 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = "home"
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Setup support for proxy headers
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
