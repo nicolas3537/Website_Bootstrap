@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<form method="post">
-    {% csrf_token %}
-    {{edit_task_form}}
-    <button type="submit"> Modifier </button>
-</form> 
+<div class="card">
+    <div class="card-hearder">
+        <h1 class="text-center"> Modifier la tâche </h1>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                    <div id="completed" class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tâche réalisée">
+                        {{edit_task_form.completed}}
+                    </div>
+                    {{edit_task_form.title}}
+                    <div class="d-inline-block">
+                        <button type="submit" class="btn btn-lg btn-info"> Modifier </button>
+                    </div>
+                    <div class="d-inline-block">
+                        <a href="{% url 'todolist' %}" class="btn btn-lg btn-secondary"> Annuler</a>
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock content %}
 
 

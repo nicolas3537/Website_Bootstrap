@@ -8,3 +8,13 @@ class TaskForm(ModelForm):
         fields = "__all__"
         exclude = ["author"]
         
+        
+    title = forms.CharField(
+        widget= forms.TextInput(
+            attrs={
+                "class": "form-control form-control-lg",
+                "placeholder": "Nouvelle tâche ...",
+            }
+        ),
+    )
+        

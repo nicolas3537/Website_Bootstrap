@@ -1,24 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1> Voici vos taches renseignées </h1>
-
-    <form method="post">
-        {% csrf_token %}
-        {{task_form.title}}
-        <button type="submit"> Ajouter </button>
-    </form>
-
-    <ol>
-        {% for task in tasks %}
-        <li>
-            {% if task.completed == True %}
-                <strike> {{task.title}} </strike>
-            {% else %}
-                {{task.title}}
-                {% endif %}
-            <a href="{% url 'update' task.id %}"> Modifier </a>
-            <a href="{% url 'delete' task.id %}"> Supprimer</a>
-        </li>
-        {% endfor %}
-    </ol>
+<div class="card">
+    <div class="card-hearder">
+        <h1 class="Ma Todo application"</h1>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                {{task_form.title}}
+                <button type="submit" class="btn btn-lg btn-primary"> Ajouter </button>
+            </div>
+        </form>
+        <h4 class="bg-secondary text-light py-2 rounded text-center"> Ma liste de tâches </h4>
+        {% if tasks %}
+                <ul class="list-group">
+                {% for task in tasks %}
+                <li class="list-group-item list-group-item-action">
+                    {% if task.completed == True %}
+                        <strike> {{task.title}} </strike>
+                    {% else %}
+                        {{task.title}}
+                        {% endif %}
+                    <div class="float-end">
+                    <a href="{% url 'update' task.id %}" class="btn btn-sm btn-warning"> Modifier </a>
+                    <a href="{% url 'delete' task.id %}" class="btn btn-sm btn-danger"> Supprimer</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h1 class="text-dark py-2 rounded text-center"> {{user|capfirst}}, vous n'avez pas de tâche </h1>
+        {% endif %}
+    </div>
+</div>
 {% endblock content %}

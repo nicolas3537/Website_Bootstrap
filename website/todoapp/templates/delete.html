@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<p> Veux tu supprimer la tâche : <strong> {{task.title}} </strong> ? </p>
-<a href="{% url 'todolist' %}"> Annuler</a>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Confirmer">
-    </form>
+<div class="card">
+    <div class="card-hearder">
+        <h1 class="text-center"> Supprimer la tâche </h1>
+    </div>
+    <div class="card-body">
+        <p> Veux tu supprimer la tâche : <strong> {{task.title}} </strong> ? </p>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="d-inline-block">
+                <a href="{% url 'todolist' %}" class="btn btn-lg btn-secondary"> Annuler</a>
+            </div>
+            <div class="d-inline-block">
+                <input type="submit" value="Confirmer" class="btn btn-lg btn-danger">
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock content %}
 
 
